@@ -27,7 +27,7 @@ use App\Form\TestType;
 class UserController extends AbstractController
 {
     /**
-     * @Route("/", name="index" , options={"expose":true})
+     * @Route("/", name="index")
      */
     public function index()
     {   
