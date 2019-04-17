@@ -17,7 +17,7 @@ security:
         main:
             logout: 
                     path: app_logout
-                    target: app_user_index
+                    target: index
             anonymous: true
             guard:
                 authenticators:

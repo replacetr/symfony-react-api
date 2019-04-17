@@ -59,12 +59,12 @@ class UserController extends AbstractController
     */
     public function addProduct(Request $request) {
 
-        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+        // $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
         $product = new ProductModel();
         $form = $this->createForm(TestType::class, $product);
         
-        dump($request->request);
+        // dump($request->request);
         // $form->handleRequest($request);
 
         if ($request->isMethod('GET') && $request->query->get('form')){
