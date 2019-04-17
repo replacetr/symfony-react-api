@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}View  {% endblock %}
+
+{% block body %}
+ <img src="{{ asset('/images/' ~ product.getProductImage) }}">
+         <h3>{{product.getProductName}} </h3>
+        Price RM :{{product.getProductPrice}}
+        <a href="/cart/{{product.getId}}" class="">Add To Cart</a>
+        
+{% endblock %}

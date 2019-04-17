@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+{% block  title %}Product list
+{% endblock %}
+{% block body %}
+
+
+{% for product in products %}
+
+
+
+<img alt="" src="{{ asset('/images/' ~ product.getProductImage) }}" style="width:150px">
+
+{% endfor %}
+
+
+
+{% endblock %}

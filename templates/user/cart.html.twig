@@ -1,0 +1,54 @@
+{% extends  "base.html.twig" %}
+
+{% block title %} Shopping Cart {% endblock %}
+{% block body %}
+<div class="container">
+<table class="table hover">
+<thead>
+<tr>
+<th></th>
+<th>Item</th>
+<th>Quantity</th>
+<th>Price</th>
+<th>Remove</th>
+<th>Total</th>
+</thead>
+
+{% set total = 0 %}{% set i = 0 %}
+{% for product in products %}
+<tbody>
+<tr>
+<td><img  height="70" width="70"  src="{{ asset( '/images/' ~ product.product.getProductImage) }}" ></td>
+<td>{{product.product.getProductName}}</td>
+<td> 
+{{form_start(form[i], {'method' : 'GET' , 'action': url('update_cart' , { 'id' : product.product.getId} ), 'attr' : {'class' : 'form-inline'}})}}
+<p>{{form_widget(form[i].update, {'value' : product.qty, 'attr' : { 'class' : 'form-control form-control-sm' , 'style': 'width:4em'}})}}
+{{form_widget(form[i].save, {'attr' : {'class' : 'btn btn-primary btn-sm'}})}}</p>
+{{form_end(form[i])}}
+{% if (product.product.getProductStock - product.qty) < 0 %}
+<p style="color:red;">Not Enough Stock </p>
+{% endif %}
+Available Stock : {{product.product.getProductStock}}
+
+</td>
+<td>Price : {{product.product.getProductPrice}}</td>
+<td> <a  class="btn btn-danger btn-sm"href="{{path('remove_cart' , {'id': product.product.getId })}}">Remove</a> </td>
+<td> {{product.product.getProductPrice * product.qty}}</td>
+
+</tbody>
+
+
+{% set total = total + (product.product.getProductPrice * product.qty) %}
+{% set i = i + 1 %}
+ {% endfor %}
+
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<th>Total</th>
+<th>{{total}}</th>
+</table>
+
+</div>
+ {% endblock %}

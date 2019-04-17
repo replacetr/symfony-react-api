@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create A New Product{% endblock %}
+{% block stylesheets %}
+
+{{ parent() }}
+
+{{ encore_entry_link_tags('crop') }}
+{% endblock %}
+
+{% block body %} 
+<div class="container">
+ {{ form_start(form, {'attr' : {'id' : 'profile_form'}}) }}
+ {{ form_widget(form) }}
+ {{ form_end(form) }}
+
+<button type="submit" id="testing">Test</button>
+<img alt="" id="avatar" src="" width="400">
+
+
+
+<img alt="" id="thumb" src="" width="100">
+
+
+</div>
+
+{% block javascript %}
+
+    {{ parent() }}
+
+    {{ encore_entry_script_tags('crop') }}
+
+{% endblock %}
+
+{% endblock %}
+
+
+
