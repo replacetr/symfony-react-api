@@ -1,0 +1,24 @@
+{
+  "entrypoints": {
+    "app": {
+      "js": [
+        "/build/runtime.1ba6bf05.js",
+        "/build/1.1a603185.js",
+        "/build/app.4a222459.js"
+      ],
+      "css": [
+        "/build/1.fd039e86.css"
+      ]
+    },
+    "crop": {
+      "js": [
+        "/build/runtime.1ba6bf05.js",
+        "/build/0.d3f59346.js",
+        "/build/crop.928dbae0.js"
+      ],
+      "css": [
+        "/build/0.31be79db.css"
+      ]
+    }
+  }
+}
