@@ -1,9 +1,23 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Index {% endblock %}
+{% block stylesheets %}
+
+{{ parent() }}
+
+
+{% endblock %}
 
 {% block body %}
-<h1>This is index</h1>
 
+<div id='root'>
+</div>
+{% block javascript %}
+
+    {{ parent() }}
+
+    {{ encore_entry_script_tags('reactApp') }}
+
+{% endblock %}
 
 {% endblock %}

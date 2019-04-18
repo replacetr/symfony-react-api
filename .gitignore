@@ -15,5 +15,6 @@
 /node_modules/
 # /public/build/
 npm-debug.log
+skeleton.rar
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###

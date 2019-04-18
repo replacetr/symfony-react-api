@@ -2,22 +2,29 @@
   "entrypoints": {
     "app": {
       "js": [
-        "/build/runtime.1ba6bf05.js",
-        "/build/1.1a603185.js",
-        "/build/app.4a222459.js"
+        "/build/runtime.js",
+        "/build/vendors~app.js",
+        "/build/app.js"
       ],
       "css": [
-        "/build/1.fd039e86.css"
+        "/build/vendors~app.css"
       ]
     },
     "crop": {
       "js": [
-        "/build/runtime.1ba6bf05.js",
-        "/build/0.d3f59346.js",
-        "/build/crop.928dbae0.js"
+        "/build/runtime.js",
+        "/build/vendors~crop.js",
+        "/build/crop.js"
       ],
       "css": [
-        "/build/0.31be79db.css"
+        "/build/vendors~crop.css"
+      ]
+    },
+    "reactApp": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors~reactApp.js",
+        "/build/reactApp.js"
       ]
     }
   }

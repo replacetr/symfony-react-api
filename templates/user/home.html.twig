@@ -8,15 +8,11 @@
 
 
 
-  <div class="container">
 {% if products %}
 
-
-     <div class="row">
-      {% set i = 0 %}
      {% for product in products %}
 
-<div class="col-lg-4">
+<div class="col-9 mx-auto col-md-6 col-lg-3 my-3">
 <div class="card" style="width: 18rem; " >
 <img alt="Card image cap" class="card-img-top" style="max-height: 100%;" src="{{ asset('/images/' ~ product.getProductImage) }}">
     <div class="card-body">
@@ -34,14 +30,10 @@
         <p></p>
         <a href="/view/{{product.getId}}" class="">View</a>
         </div> #}
-    {% set i = (i + 1) %}
-     {% if (i % 3) == 0 %}
-     </div><div class="row">
-     {% endif %}
+
      
         {% endfor %}
-      </div>
-
+ 
 
 
 
@@ -50,6 +42,6 @@
 
 {% endif %}
 
-</div>
+
   {% endblock %}
 

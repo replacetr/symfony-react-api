@@ -21,6 +21,7 @@ Encore
     // .addEntry('new', './assets/js/new.js')
     //.addEntry('page2', './assets/js/page2.js')
     .addEntry('crop', './assets/js/cropper/testcrop.js')
+    .addEntry('reactApp', './assets/js/react-app/react-app.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
@@ -62,7 +63,7 @@ Encore
     //.autoProvidejQuery()
 
     // uncomment if you use API Platform Admin (composer req api-admin)
-    //.enableReactPreset()
+    .enableReactPreset()
     //.addEntry('admin', './assets/js/admin.js')
 ;
 

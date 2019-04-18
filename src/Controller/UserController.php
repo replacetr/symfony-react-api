@@ -65,30 +65,29 @@ class UserController extends AbstractController
         $form = $this->createForm(TestType::class, $product);
         
         // dump($request->request);
-        // $form->handleRequest($request);
+        $form->handleRequest($request);
 
-        if ($request->isMethod('GET') && $request->query->get('form')){
-            // $file = $form['product_image']->getData();
+        if ($form->isSubmitted() && $form->isValid()) {
+            $file = $form['product_image']->getData();
             
-            // // if($file->guessExtension() != 'JPEG' || 'JPG' || PNG )
-            // $fileName = md5(uniqid()) .'.'.$file->guessExtension();
-            // // Move the file to the directory where brochures are stored
-            // try {
-            //     $file->move(
-            //         $this->getParameter('image_directory'),
-            //         $fileName
-            //     );
-            // } catch (FileException $e) {
-            //     // ... handle exception if something happens during file upload
-            //     $filename = 'NoImage.jpeg';
-            // }
-            // $product = $form->getData();
-            // //check cni mcm ada bug
-            // $product->setProductImage($fileName);
+            // if($file->guessExtension() != 'JPEG' || 'JPG' || PNG )
+            $fileName = md5(uniqid()) .'.'.$file->guessExtension();
+            // Move the file to the directory where brochures are stored
+            try {
+                $file->move(
+                    $this->getParameter('image_directory'),
+                    $fileName
+                );
+            } catch (FileException $e) {
+                // ... handle exception if something happens during file upload
+                $filename = 'NoImage.jpeg';
+            }
+            
+            $product->setProductImage($fileName);
 
-            // $entityManager = $this->getDoctrine()->getManager();
-            // $entityManager->persist($product);
-            // $entityManager->flush();
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($product);
+            $entityManager->flush();
             
             return $this->redirectToRoute('home');
          
