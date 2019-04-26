@@ -1,16 +1,61 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
+import axios from "axios";
+import Borang from "./Borang";
+import Json from "./Json";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: null,
+      jsonData: "{}"
+    };
+
+    this.tinguk = this.tinguk.bind(this);
+  }
+
+  componentDidMount() {
+    axios
+      .get("/admin")
+      .then(response => {
+        console.log("response", response.data);
+        sessionStorage.setItem("data", JSON.stringify(response.data));
+        this.setState({ data: response.data });
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  }
+
+  tinguk() {
+    const dataFrom = sessionStorage.getItem("data");
+    this.setState({ jsonData: dataFrom });
+    console.log(this.state);
+  }
   render() {
+    console.log("state->", this.state);
+    const { data, jsonData } = this.state;
+
+    const objData = JSON.parse(jsonData);
+    console.log(objData);
+
     return (
       <div>
         <div className="container">
-          this is div container
+          <button onClick={() => this.tinguk()}>log</button>
+          <ul>{objData.length && <Json objData={objData} />}</ul>
+          {/* 
+        
+          {/* data {!data && <h3>Loading...</h3>}
+          {data && (
+            <ul>
+              <Borang data={data} />
+            </ul>
+          )} */}
         </div>
       </div>
-    )
+    );
   }
 }
 
-
-export default App
+export default App;

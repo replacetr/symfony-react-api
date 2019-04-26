@@ -7,5 +7,6 @@
   "build/vendors~app.js": "/build/vendors~app.js",
   "build/vendors~crop.css": "/build/vendors~crop.css",
   "build/vendors~crop.js": "/build/vendors~crop.js",
-  "build/vendors~reactApp.js": "/build/vendors~reactApp.js"
+  "build/vendors~reactApp.js": "/build/vendors~reactApp.js",
+  "build/vendors~crop~reactApp.js": "/build/vendors~crop~reactApp.js"
 }

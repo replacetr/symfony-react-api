@@ -13,6 +13,7 @@
     "crop": {
       "js": [
         "/build/runtime.js",
+        "/build/vendors~crop~reactApp.js",
         "/build/vendors~crop.js",
         "/build/crop.js"
       ],
@@ -23,6 +24,7 @@
     "reactApp": {
       "js": [
         "/build/runtime.js",
+        "/build/vendors~crop~reactApp.js",
         "/build/vendors~reactApp.js",
         "/build/reactApp.js"
       ]
