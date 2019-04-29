@@ -19,7 +19,7 @@ use App\Entity\OrderModel;
 class AdminController extends AbstractFOSRestController
 {
 
-    public function getOrdersAction()
+    public function getAdminOrdersAction()
     {
         $data = $this->getDoctrine()->getRepository(OrderModel::class)->findBy(['user' => $this->getUser()]);
 
@@ -58,5 +58,19 @@ class AdminController extends AbstractFOSRestController
     public function getUserAction()
     {
         return $this->view(['message' => 'ini user'], Response::HTTP_OK);
+    }
+
+    public function deleteAdminAllAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $orders = $em->getRepository(OrderModel::class)->findAll();
+
+        foreach ($orders as $order) {
+
+            $em->remove($order);
+            $em->flush();
+        }
+
+        return $this->view(['message' => 'deleted all'], Response::HTTP_OK);
     }
 }

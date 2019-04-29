@@ -30,7 +30,7 @@ class OrderModel
     private $total;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\OrderDetails", mappedBy="orders")
+     * @ORM\OneToMany(targetEntity="App\Entity\OrderDetails", mappedBy="orders", cascade={"REMOVE"})
      */
     private $orderdetails;
 
@@ -98,6 +98,4 @@ class OrderModel
 
         return $this;
     }
-
-   
 }

@@ -1,6 +1,7 @@
 {
   "build/app.js": "/build/app.js",
   "build/crop.js": "/build/crop.js",
+  "build/reactApp.css": "/build/reactApp.css",
   "build/reactApp.js": "/build/reactApp.js",
   "build/runtime.js": "/build/runtime.js",
   "build/vendors~app.css": "/build/vendors~app.css",

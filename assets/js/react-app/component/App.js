@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import Borang from "./Borang";
 import Json from "./Json";
+import Sidebar from "./sidebar";
 
 class App extends Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class App extends Component {
 
   componentDidMount() {
     axios
-      .get("/api/orders")
+      .get("/api/admin/orders")
       .then(response => {
         console.log("response", response.data);
       })
@@ -30,27 +31,24 @@ class App extends Component {
     this.setState({ jsonData: dataFrom });
     console.log(this.state);
   }
+  deleteOrder() {
+    axios
+      .delete("/api/admin/all")
+      .then(response => {
+        console.log("response", response);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  }
   render() {
-    console.log("state->", this.state);
-    const { data, jsonData } = this.state;
-
-    const objData = JSON.parse(jsonData);
-    console.log(objData);
-
     return (
       <div>
-        <div className="container">
-          <button onClick={() => this.tinguk()}>log</button>
-          <ul>{objData.length && <Json objData={objData} />}</ul>
-          {/* 
-        
-          {/* data {!data && <h3>Loading...</h3>}
-          {data && (
-            <ul>
-              <Borang data={data} />
-            </ul>
-          )} */}
-        </div>
+        <Sidebar />
+        {/* <div className="container">Delet All Orders</div>
+        <button className="btn btn-primary" onClick={() => this.deleteOrder()}>
+          Delete
+        </button> */}
       </div>
     );
   }

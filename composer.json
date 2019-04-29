@@ -9,6 +9,7 @@
         "friendsofsymfony/jsrouting-bundle": "^2.3",
         "friendsofsymfony/rest-bundle": "^2.5",
         "jms/serializer-bundle": "^3.3",
+        "lexik/jwt-authentication-bundle": "^2.6",
         "paypal/paypal-checkout-sdk": "^1.0",
         "sensio/framework-extra-bundle": "^5.2",
         "symfony/apache-pack": "^1.0",

@@ -27,6 +27,9 @@
         "/build/vendors~crop~reactApp.js",
         "/build/vendors~reactApp.js",
         "/build/reactApp.js"
+      ],
+      "css": [
+        "/build/reactApp.css"
       ]
     }
   }
