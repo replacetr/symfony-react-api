@@ -2,59 +2,54 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Request;;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\Response;
+
+use FOS\RestBundle\Controller\Annotations as Rest;
+use FOS\RestBundle\Controller\AbstractFOSRestController;
+use FOS\RestBundle\View\View;
+use FOS\RestBundle\Request\ParamFetcher;
 use App\Entity\ProductModel;
-use App\Entity\User;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Encoder\XmlEncoder;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Doctrine\DBAL\Driver\PDOException;
+use App\Entity\Test;
+use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use App\Entity\OrderModel;
 
-
-
-
-class AdminController extends AbstractController
+class AdminController extends AbstractFOSRestController
 {
-    /**
-     * @Route("/admin", name="admin")
-     */
-    public function index(Request $request)
-    {   
-        $this->denyAccessUnlessGranted('ROLE_ADMIN');
-        // if($request->isXmlHttpRequest()){
-        //     throw new \Exception('please login to continue');
-        //     return $this->json(['username' => 'saitan iblis']);
 
-        // }
-       
-        // return $this->render('admin/index.html.twig', [
-        //     'controller_name' => 'AdminController',
-        // ]);
-        // $user = [
-        //     'username'  => 'budu'
-        // ];
-        $user = $this->getUser();
+    public function getOrdersAction()
+    {
+        $data = $this->getDoctrine()->getRepository(OrderModel::class)->findBy(['user' => $this->getUser()]);
 
-
-        $repository = $this->getDoctrine()->getRepository(ProductModel::class)->findAll();
-
-        // var_dump($jsonContent);
-        // die();
-
-        
-
-     
-
-
-
-        return $this->json($repository);
+        return $this->view($data, Response::HTTP_OK);
     }
 
 
 
+    public function postAdminAction(Request $request)
+    {
 
+        $test = new ProductModel();
+        $test->setProductImage('entah');
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($test);
+        $em->flush();
+
+        $data = [
+            'message' => 'success'
+        ];
+
+
+        return $this->view($data, Response::HTTP_OK);
+    }
+
+    /**
+     * @Rest\RequestParam(name="title", description="Title of the new task", nullable=false)
+     * @param ParamFetcher $paramFetcher
+     */
+
+    public function putAdminAction(ParamFetcher $paramFetcher, ProductModel $productModel)
+    { }
 }

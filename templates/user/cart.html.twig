@@ -14,7 +14,7 @@
 <th>Total</th>
 </thead>
 
-{% set total = 0 %}{% set i = 0 %}
+{% set total = 0 %}{% set i = 0 %}{% set notEnoughStock = 0 %}
 {% for product in products %}
 <tbody>
 <tr>
@@ -27,6 +27,7 @@
 {{form_end(form[i])}}
 {% if (product.product.getProductStock - product.qty) < 0 %}
 <p style="color:red;">Not Enough Stock </p>
+{% set notEnoughStock = notEnoughStock + 1 %}
 {% endif %}
 Available Stock : {{product.product.getProductStock}}
 
@@ -49,6 +50,8 @@ Available Stock : {{product.product.getProductStock}}
 <th>Total</th>
 <th>{{total}}</th>
 </table>
-
+{# {% if (notEnoughStock == 0 ) %} #}
+<a class="btn btn-primary btn-sm" href="{{path('orders')}}">Checkout</a>
+{# {% endif %} #}
 </div>
  {% endblock %}

@@ -1,3 +1,9 @@
 # app_lucky_number:
 #    path: /
 #    controller: App\Controller\LuckyController::number
+
+
+admin: 
+  type: rest
+  resource: App\Controller\AdminController
+  prefix: api
