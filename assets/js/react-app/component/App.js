@@ -16,11 +16,9 @@ class App extends Component {
 
   componentDidMount() {
     axios
-      .get("/admin")
+      .get("/api/orders")
       .then(response => {
         console.log("response", response.data);
-        sessionStorage.setItem("data", JSON.stringify(response.data));
-        this.setState({ data: response.data });
       })
       .catch(e => {
         console.log(e);

@@ -28,7 +28,7 @@ class AdminController extends AbstractFOSRestController
 
 
 
-    public function postAdminAction(Request $request)
+    public function postAdminTaskAction(Request $request)
     {
 
         $test = new ProductModel();
@@ -50,6 +50,13 @@ class AdminController extends AbstractFOSRestController
      * @param ParamFetcher $paramFetcher
      */
 
-    public function putAdminAction(ParamFetcher $paramFetcher, ProductModel $productModel)
-    { }
+    public function getAdminAction()
+    {
+        return $this->view(['message' => 'ini admin'], Response::HTTP_OK);
+    }
+
+    public function getUserAction()
+    {
+        return $this->view(['message' => 'ini user'], Response::HTTP_OK);
+    }
 }
